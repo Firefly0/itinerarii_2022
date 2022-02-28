@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Itinerarii spirituale",
+    "description": "Aplicatie pentru itinerarii spirituale in perioada postului",
+    "slug": "Itinerariispirituale",
+    "version": "33.0.0",
+    "orientation": "portrait",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/images/ac.png",
+    "splash": {
+      "image": "./assets/images/ac.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "versionCode": 33,
+      "package": "itinerarii.spirituale",
+      "permissions": []
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "sdkVersion": "43.0.0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}
