@@ -3,7 +3,7 @@ import { ScrollView } from "react-native";
 import { ListItem } from "react-native-elements";
 import { APIKEY } from "../apikeys";
 import { useWindowDimensions } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Days = ({ route, navigation }) => {
     const { width } = useWindowDimensions();
@@ -11,7 +11,7 @@ const Days = ({ route, navigation }) => {
     const id = element.id;
     const [items, setItems] = useState([]);
     async function getData() {
-        AsyncStorage.getItem(id).then((data) => {
+        AsyncStorage.getItem(id).then((data: any) => {
             if (data) {
                 setItems(JSON.parse(data));
             }
@@ -30,9 +30,10 @@ const Days = ({ route, navigation }) => {
     return (
         <ScrollView>
             {items &&
-                items.map((el) => {
+                items.map((el, i) => {
                     return (
                         <ListItem
+                            key={i}
                             bottomDivider
                             containerStyle={{
                                 backgroundColor: element.listItemColor,

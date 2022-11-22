@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { ScrollView, Text, Button } from "react-native";
+import React from "react";
+import { ScrollView, Text } from "react-native";
 import { Image } from "react-native-elements";
-import { Audio } from "expo-av";
-import { useWindowDimensions } from "react-native";
-import * as FileSystem from "expo-file-system";
-import soundComponent from "../soundComponent";
 
-const Introducere = ({ route, navigation }) => {
+
+const Introducere = ({ route, navigation }) =>
+{
     const { element } = route.params;
-
     return (
         <ScrollView
             style={{
@@ -17,7 +14,7 @@ const Introducere = ({ route, navigation }) => {
         >
             <Image
                 source={{
-                    uri: "http://itinerar-advent2021.aciasi.ro/images/landingPage/post_intro_img.jpg",
+                    uri: `http://itinerar-advent2021.aciasi.ro/${element.image_path}`,
                 }}
                 style={{ width: "100%", height: 220 }}
             />

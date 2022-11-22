@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
-import { useWindowDimensions } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const authorization =
     "Bearer phtlgYSmkVobBNtlp2uszCEaB6AP9OIhlQ3TVB9FYqCEnJn0uw";
 
-const NewDays = ({ route, navigation }) => {
-    console.log(route.params);
+const NewDays = ({ route, navigation }) =>
+{
     const blogInfo = route.params.blogInfo;
     const [intro, setIntro] = useState(null);
     const [items, setItems] = useState([]);
-    async function getIntroData() {
+    async function getIntroData()
+    {
         const response = await fetch(blogInfo.introPost, {
             headers: {
                 authorization: authorization,
@@ -23,9 +23,12 @@ const NewDays = ({ route, navigation }) => {
         setIntro(json.intro_post);
     }
 
-    async function getData() {
-        AsyncStorage.getItem(blogInfo.nameForStoragePurpose).then((data) => {
-            if (data) {
+    async function getData()
+    {
+        AsyncStorage.getItem(blogInfo.nameForStoragePurpose).then((data) =>
+        {
+            if (data)
+            {
                 setItems(JSON.parse(data));
             }
         });
@@ -41,14 +44,16 @@ const NewDays = ({ route, navigation }) => {
             JSON.stringify(json.data)
         );
     }
-    useEffect(() => {
+    useEffect(() =>
+    {
         getIntroData();
         getData();
     }, []);
     return (
         <ScrollView>
             {items &&
-                items.map((el) => {
+                items.reverse().map((el, i) =>
+                {
                     return (
                         <ListItem
                             bottomDivider
@@ -63,7 +68,7 @@ const NewDays = ({ route, navigation }) => {
                                     element: el,
                                 })
                             }
-                            key={el.id}
+                            key={i}
                         >
                             <Avatar
                                 rounded
@@ -81,6 +86,11 @@ const NewDays = ({ route, navigation }) => {
                                 >
                                     {el.title}
                                 </ListItem.Title>
+                                <ListItem.Subtitle
+                                    style={{ color: "white", paddingLeft: 10 }}
+                                >
+                                    {el.created_at.slice(0, 10)}
+                                </ListItem.Subtitle>
                             </ListItem.Content>
                             <ListItem.Chevron />
                         </ListItem>

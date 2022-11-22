@@ -2,9 +2,9 @@ import React from "react";
 import { ScrollView, Text, SafeAreaView, Button, Linking } from "react-native";
 import { Image } from "react-native-elements";
 
-const NewContent = ({ route, navigation }) => {
+const NewContent = ({ route }) =>
+{
     const { element } = route.params;
-    console.log(element);
 
     return (
         <ScrollView key={element.id}>
@@ -37,9 +37,10 @@ const NewContent = ({ route, navigation }) => {
             </SafeAreaView>
             <Text style={contentTextStyle}>{element.text_evanghelie}</Text>
 
-            {element.path_audio_evanghelie?.length && (
+            {element.path_audio_evanghelie ?.length && (
                 <Button
-                    onPress={() => {
+                    onPress={() =>
+                    {
                         Linking.openURL(element.path_audio_evanghelie);
                     }}
                     title="Audio"
@@ -84,9 +85,10 @@ const NewContent = ({ route, navigation }) => {
             </SafeAreaView>
             <Text style={contentTextStyle}>{element.rugaciune_tanar}</Text>
 
-            {element.path_audio_rugaciune?.length && (
+            {element.path_audio_rugaciune ?.length && (
                 <Button
-                    onPress={() => {
+                    onPress={() =>
+                    {
                         Linking.openURL(element.path_audio_rugaciune);
                     }}
                     title="Audio"
@@ -107,9 +109,10 @@ const NewContent = ({ route, navigation }) => {
             </SafeAreaView>
             <Text style={contentTextStyle}>{element.provocare_tanar}</Text>
 
-            {element.path_audio_provocare?.length && (
+            {element.path_audio_provocare ?.length && (
                 <Button
-                    onPress={() => {
+                    onPress={() =>
+                    {
                         Linking.openURL(element.path_audio_provocare);
                     }}
                     title="Audio"
@@ -119,12 +122,13 @@ const NewContent = ({ route, navigation }) => {
             {element.comments !== undefined && element.comments.length !== 0 && (
                 <SafeAreaView>
                     <Text style={comentariiStyle}>Comentarii</Text>
-                    {element.comments.map((el) => {
+                    {element.comments.map((el, i) =>
+                    {
                         return (
-                            <SafeAreaView>
+                            <SafeAreaView key={i}>
                                 <Text style={comentariiNameStyle}>
-                                    La data de {el.created_at?.substr(0, 10)}{" "}
-                                    {el.user?.name} a spus:
+                                    La data de {el.created_at ?.substr(0, 10)}{" "}
+                                    {el.user ?.name} a spus:
                                 </Text>
                                 <Text style={commentBodyStyle}>{el.body}</Text>
                             </SafeAreaView>

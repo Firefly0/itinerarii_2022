@@ -3,7 +3,7 @@
     "name": "Itinerarii spirituale",
     "description": "Aplicatie pentru itinerarii spirituale in perioada postului",
     "slug": "Itinerariispirituale",
-    "version": "33.0.0",
+    "version": "35.0.0",
     "orientation": "portrait",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -24,17 +24,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/ac.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 33,
+      "versionCode": 35,
       "package": "itinerarii.spirituale",
       "permissions": []
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "sdkVersion": "43.0.0",
+    "sdkVersion": "45.0.0",
     "platforms": [
       "android",
       "ios"
