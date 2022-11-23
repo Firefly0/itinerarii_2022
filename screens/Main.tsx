@@ -17,7 +17,7 @@ const Main = ({ }) => {
     }, [])
     return (
         <View>
-            {blogsStartWith2021 && blogsStartWith2021.map((blog: { title: string, avatar: string, subtitle: string }) => {
+            {blogsStartWith2021 && blogsStartWith2021.map((blog: { title: string, avatar: string, subtitle: string }, i) => {
                 return (
                     <ListItem
                         containerStyle={{
@@ -30,6 +30,7 @@ const Main = ({ }) => {
                                 blogInfo: blog,
                             })
                         }
+                        key={i}
                     >
                         <Avatar
                             rounded
