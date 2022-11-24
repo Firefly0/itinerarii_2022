@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, ActivityIndicator } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -11,6 +11,8 @@ const NewDays = ({ route, navigation }) =>
     const blogInfo = route.params.blogInfo;
     const [intro, setIntro] = useState(null);
     const [items, setItems] = useState([]);
+    const [loaded, setLoaded] = useState(false)
+
     async function getIntroData()
     {
         const response = await fetch(blogInfo.introPost, {
@@ -49,6 +51,21 @@ const NewDays = ({ route, navigation }) =>
         getIntroData();
         getData();
     }, []);
+
+    useEffect(() =>
+    {
+        if (intro || items)
+        {
+            setLoaded(true)
+        }
+    }, [intro, items])
+    if (!loaded)
+    {
+        return (
+            <ActivityIndicator size="large" color="#0000ff" />
+        )
+    }
+
     return (
         <ScrollView>
             {items &&

@@ -3,7 +3,7 @@
     "name": "Itinerarii spirituale",
     "description": "Aplicatie pentru itinerarii spirituale in perioada postului",
     "slug": "Itinerariispirituale",
-    "version": "38.0.0",
+    "version": "39.0.0",
     "orientation": "portrait",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/images/ac.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 38,
+      "versionCode": 39,
       "package": "itinerarii.spirituale",
       "permissions": []
     },

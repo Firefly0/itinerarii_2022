@@ -1,22 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { ListItem, Avatar } from "react-native-elements";
-import { View } from "react-native";
+import { ListItem, Avatar, Dialog } from "react-native-elements";
+
 import blogs from "../constants/blogs";
 import { useNavigation } from "@react-navigation/native";
+import { ScrollView, ActivityIndicator } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Main = ({ }) => {
     const navigation = useNavigation();
     const [blogsStartWith2021, setblogs] = useState<undefined | []>()
+    const [loaded, setLoaded] = useState(false)
     async function getData() {
+
+        AsyncStorage.getItem('blogsStartWith2021').then((data) => {
+            if (data) {
+                setblogs(JSON.parse(data));
+            }
+        });
+
         const response = await fetch('https://api.npoint.io/4519576c903ccba3a1d7')
         const json = await response.json()
         setblogs(json)
+        AsyncStorage.setItem(
+            'blogsStartWith2021',
+            JSON.stringify(json)
+        );
     }
     useEffect(() => {
         getData()
     }, [])
+
+    useEffect(() => {
+        if (blogsStartWith2021) {
+            setLoaded(true)
+        }
+    }, [blogsStartWith2021])
+
+    if (!loaded) {
+        return (
+            <ActivityIndicator size="large" color="#0000ff" />
+        )
+    }
     return (
-        <View>
+        <ScrollView>
             {blogsStartWith2021 && blogsStartWith2021.map((blog: { title: string, avatar: string, subtitle: string }, i) => {
                 return (
                     <ListItem
@@ -98,7 +124,7 @@ const Main = ({ }) => {
                         </ListItem>
                     );
                 })}
-        </View>
+        </ScrollView>
     );
 };
 
